@@ -1,0 +1,60 @@
+/* Centering and layout */
+.container {
+  text-align: center;
+  padding: 0 20px;
+}
+
+.header {
+  margin-bottom: -2rem;
+}
+
+.logo {
+  width: 200px;
+}
+
+/* Main content */
+
+.main-text {
+  font-size: 18px;
+  color:#572E91;;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .step {
+    margin-bottom: 20px;
+
+    h3 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+  }
+}
+
+/* Button styles */
+.btn {
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+
+  &.install-btn {
+    background-color: #572E91;
+    color: white;
+  }
+
+  &.start-btn {
+    background-color: #572E91;
+    color: white;
+  }
+}

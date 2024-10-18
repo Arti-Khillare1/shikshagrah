@@ -1,0 +1,24 @@
+.container {
+    text-align: center;
+    margin-top: 15rem;
+}
+
+h1{
+    font-size: 5rem;
+}
+  
+.button {
+    font-weight: 300;
+    color: black;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border: 1px solid black;
+    padding: .5rem;
+    border-radius: 3px;
+    float: left;
+    margin: 2rem 0 0 -155px;
+    left: 50%;
+    position: relative;
+    transition: all .3s linear;
+}
+  
