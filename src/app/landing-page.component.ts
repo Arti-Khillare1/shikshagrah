@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,7 +8,41 @@ import { Component } from '@angular/core';
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.scss'
 })
-export class LandingPageComponent {
+export class LandingPageComponent  implements OnInit{
+  
+  projectId: string | null = null;
+  action: string | null = null;
+  validActions: string[] = ['create-observation', 'take-survey', 'project'];
+
+  constructor(private route: ActivatedRoute,  private router: Router) {}
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.action = params['action']; 
+      this.projectId = params['id']; 
+
+      if (this.action && !this.validActions.includes(this.action as string)) {
+        this.router.navigate(['/404']); 
+      }
+    });
+  }
+
+  handleAction() {
+    switch (this.action) {
+      case 'create-observation':
+        this.onCreateObservation();
+        break;
+      case 'take-survey':
+        this.onTakeSurvey();
+        break;
+      case 'project':
+      case 'start':
+        this.onStartProject();
+        break;
+      default:
+        console.error('Invalid action');
+    }
+  }
 
   onInstallClick() {
      window.location.href = 'https://play.google.com/store/apps/details?id=org.shikshagraha.app&hl=en_IN';
@@ -35,6 +70,14 @@ export class LandingPageComponent {
       alert("Please download the Shikshagraha app on your mobile device.");
       window.open('https://play.google.com/store/apps/details?id=org.shikshagraha.app&hl=en_IN', '_blank');
     }
+  }
+
+  onCreateObservation() {
+
+  }
+
+  onTakeSurvey() {
+
   }
 
 }

@@ -1,25 +1,31 @@
 <div class="container">
-    <div class="header">
-      <img src="assets/logos/Shikshagraha-01.png" alt="Diksha Logo" class="logo" />
-    </div>
+  <div class="header">
+    <img src="assets/logos/Shikshagraha-01.png" alt="Diksha Logo" class="logo" />
+  </div>
 
-    <div class="main-content">
-      <p class="main-text">
-        This improvement project can only be filled using Shikshagraha mobile app
+  <div class="main-content">
+    <p class="main-text">
+      This improvement project can only be filled using Shikshagraha mobile app
+    </p>
+
+    <div class="steps">
+      <div class="step">
+        <h3>Step 1</h3>
+        <p>If you do not have the Shikshagraha app, install it here.</p>
+        <button class="btn install-btn" (click)="onInstallClick()">Install app</button>
+      </div>
+
+      <div class="step">
+        <h3>Step 2</h3>
+      <p>
+        {{ action === 'create-observation' ? 'Create a observation using the Shikshagraha App' : 
+           action === 'take-survey' ? 'Take the survey using the Shikshagraha App' : 
+           'Take up improvement project using the Shikshagraha App' }}
       </p>
-  
-      <div class="steps">
-        <div class="step">
-          <h3>Step 1</h3>
-          <p>If you do not have the Shikshagraha app, install it here.</p>
-          <button class="btn install-btn" (click)="onInstallClick()">Install app</button>
-        </div>
-  
-        <div class="step">
-          <h3>Step 2</h3>
-          <p>Take up improvement project using the Shikshagraha App</p>
-          <button class="btn start-btn" (click)="onStartProject()">Start project</button>
-        </div>
+      <button class="btn start-btn" (click)="handleAction()">
+        {{ action === 'create-observation' ? 'Create Observation' : (action === 'take-survey' ? 'Take Survey' : 'Start Project') }}
+      </button>
       </div>
     </div>
+  </div>
 </div>

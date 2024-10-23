@@ -4,6 +4,13 @@ import { PageNotFoundComponent } from './page-not-found.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/shikshagraha', pathMatch: 'full' }, 
-  { path: 'shikshagraha', component: LandingPageComponent },
+  {
+    path: 'shikshagraha',
+    component: LandingPageComponent
+  },
+  {
+    path: 'shikshagraha/:action/:id',
+    component: LandingPageComponent,
+  },
   { path: '**', component: PageNotFoundComponent },                 
 ];
