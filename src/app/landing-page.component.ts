@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './landing-page.component.scss'
 })
 export class LandingPageComponent  implements OnInit{
-  
+
   projectId: string | null = null;
   action: string | null = null;
   validActions: string[] = ['create-observation', 'take-survey', 'project'];
@@ -45,7 +45,7 @@ export class LandingPageComponent  implements OnInit{
   }
 
   onInstallClick() {
-     window.location.href = 'https://play.google.com/store/apps/details?id=org.shikshagraha.app&hl=en_IN';
+     window.open('https://play.google.com/store/apps/details?id=org.shikshagraha.app&hl=en_IN', '_blank');
   }
 
   onStartProject() {

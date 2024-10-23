@@ -3,9 +3,9 @@ import { LandingPageComponent } from './landing-page.component';
 import { PageNotFoundComponent } from './page-not-found.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' }, 
+  { path: '', redirectTo: '/404', pathMatch: 'full' }, 
   {
-    path: 'shikshagraha/:action/:id',
+    path: ':action/:id',
     component: LandingPageComponent,
   },
   { path: '**', component: PageNotFoundComponent },                 
