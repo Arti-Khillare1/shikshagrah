@@ -36,7 +36,9 @@
     }
   }
 }
-
+.button{
+  margin-top: 20px;
+}
 /* Button styles */
 .btn {
   font-size: 16px;
@@ -46,11 +48,13 @@
   border-radius: 5px;
 
   &.install-btn {
+    text-decoration: none;
     background-color: #572E91;
     color: white;
   }
 
   &.start-btn {
+    text-decoration: none;
     background-color: #572E91;
     color: white;
   }

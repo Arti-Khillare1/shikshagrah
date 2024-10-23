@@ -36,7 +36,6 @@ export class LandingPageComponent  implements OnInit{
         this.onTakeSurvey();
         break;
       case 'project':
-      case 'start':
         this.onStartProject();
         break;
       default:
@@ -48,36 +47,54 @@ export class LandingPageComponent  implements OnInit{
      window.open('https://play.google.com/store/apps/details?id=org.shikshagraha.app&hl=en_IN', '_blank');
   }
 
-  onStartProject() {
-
-    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   
-    if (isMobile) {
-      if (/Android/i.test(navigator.userAgent)) {
-        // Android Intent link (trigger app on Android)
-        window.location.href = 'intent://launch/#Intent;scheme=appname;package=org.shikshagraha.app;end';
-      } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        // iOS URL scheme or Universal Link
-        window.location.href = 'appname://';
-        
-        // Fallback to App Store if app is not installed
-        setTimeout(function() {
-          window.location.href = 'https://apps.apple.com/us/app/shikshagraha/id123456789';
-        }, 1000);
+  getDeepLink(): string {
+    // Build the deep link dynamically based on the current action and projectId
+    if (this.action && this.projectId) {
+      return `org.shikshagraha.app://deeplink/manage-learn/${this.action}/${this.projectId}`;
+    }
+    return '';
+  }
+
+  onClickAction() {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const deepLink = this.getDeepLink(); 
+
+    if (deepLink) {
+      if (isMobile) {
+        if (/Android/i.test(navigator.userAgent)) {
+          // Android deep link
+          window.location.href = deepLink;
+          setTimeout(() => {
+            window.location.href = 'https://play.google.com/store/apps/details?id=org.shikshagraha.app&hl=en_IN';
+          }, 2000);
+        } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+          // iOS deep link
+          window.location.href = deepLink;
+          setTimeout(() => {
+            window.location.href = 'https://apps.apple.com/us/app/shikshagraha/id123456789';
+          }, 1000);
+        }
+      } else {
+        // Desktop fallback
+        alert("Please download the Shikshagraha app on your mobile device.");
+        window.open('https://play.google.com/store/apps/details?id=org.shikshagraha.app&hl=en_IN', '_blank');
       }
     } else {
-      // For desktop, provide a download link or alternative action
-      alert("Please download the Shikshagraha app on your mobile device.");
-      window.open('https://play.google.com/store/apps/details?id=org.shikshagraha.app&hl=en_IN', '_blank');
+      console.error('Deep link could not be constructed.');
     }
   }
 
-  onCreateObservation() {
+  onStartProject(){
+    this.onClickAction()
+  }
 
+  onCreateObservation() {
+    this.onClickAction()
   }
 
   onTakeSurvey() {
-
+    this.onClickAction()
   }
 
 }

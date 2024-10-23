@@ -12,7 +12,9 @@
       <div class="step">
         <h3>Step 1</h3>
         <p>If you do not have the Shikshagraha app, install it here.</p>
-        <button class="btn install-btn" (click)="onInstallClick()">Install app</button>
+        <div class="button">
+        <a class="btn install-btn" (click)="onInstallClick()">Install app</a>
+        </div>
       </div>
 
       <div class="step">
@@ -22,9 +24,15 @@
            action === 'take-survey' ? 'Take the survey using the Shikshagraha App' : 
            'Take up improvement project using the Shikshagraha App' }}
       </p>
-      <button class="btn start-btn" (click)="handleAction()">
-        {{ action === 'create-observation' ? 'Create Observation' : (action === 'take-survey' ? 'Take Survey' : 'Start Project') }}
-      </button>
+      <div class="button">
+        <a 
+          [href]="getDeepLink()"
+          class="btn start-btn"
+          (click)="handleAction()">
+          {{ action === 'create-observation' ? 'Create Observation' : 
+             (action === 'take-survey' ? 'Take Survey' : 'Start Project') }}
+        </a>
+      </div>
       </div>
     </div>
   </div>
